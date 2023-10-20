@@ -2,6 +2,8 @@ package model
 
 import (
 	"encoding/json"
+	"errors"
+	"fmt"
 
 	"github.com/asaskevich/govalidator"
 )
@@ -12,10 +14,10 @@ func init() {
 
 // Entity
 type Product struct {
-	ID          int32  `valid:"notnull"`
-	Name        string `valid:"notnull"`
-	Description string `valid:"notnull"`
-	Price       Money  `valid:"-"`
+	ID          int32  `json:"id" valid:"int,optional"`
+	Name        string `json:"name" valid:"notnull"`
+	Description string `json:"description" valid:"notnull"`
+	Price       Money  `json:"price" valid:"-"`
 }
 
 func (p *Product) isValid() error {
@@ -60,8 +62,18 @@ func NewProduct(id int32, name string, description string, price int) (*Product,
 		Money{price},
 	}
 
+	var iderr error
+	if p.ID < 0 {
+		iderr = errors.New("ID: must be greater than or equal to 0")
+	}
+
 	if err := p.isValid(); err != nil {
-		return nil, err
+		newerr := fmt.Errorf("%v;%v", err, iderr)
+		return nil, newerr
+	}
+
+	if iderr != nil {
+		return nil, iderr
 	}
 
 	return p, nil
@@ -75,5 +87,5 @@ func NewProductFromJson(data []byte) (*Product, error) {
 		return nil, err
 	}
 
-	return &Product{}, nil
+	return p, nil
 }

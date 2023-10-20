@@ -2,7 +2,7 @@ package model
 
 // Value Object
 type Money struct {
-	Value int `valid:"int,optional"`
+	Value int `json:"value" valid:"int,optional"`
 }
 
 func (m *Money) ToBrazilianReal() float64 {
