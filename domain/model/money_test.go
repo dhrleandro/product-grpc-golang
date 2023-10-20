@@ -16,3 +16,11 @@ func TestToBrazilianReal(t *testing.T) {
 	require.Equal(t, m.ToBrazilianReal(), float64(0.01))
 	require.Equal(t, m.ToBrazilianReal(), 0.01)
 }
+
+func TestSetValueFromBrazilianReal(t *testing.T) {
+	m := &model.Money{}
+	var brl float64 = 236.89
+
+	m.SetValueFromBrazilianReal(brl)
+	require.Equal(t, m.Value, 23689)
+}
