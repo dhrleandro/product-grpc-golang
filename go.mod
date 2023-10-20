@@ -1,4 +1,4 @@
-module github.com/dhrleandro/product-grpg-golang
+module github.com/dhrleandro/product-grpc-golang
 
 go 1.21.1
 

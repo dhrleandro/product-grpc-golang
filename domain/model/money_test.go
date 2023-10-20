@@ -3,7 +3,7 @@ package model_test
 import (
 	"testing"
 
-	"github.com/dhrleandro/product-grpg-golang/domain/model"
+	"github.com/dhrleandro/product-grpc-golang/domain/model"
 	"github.com/stretchr/testify/require"
 )
 
