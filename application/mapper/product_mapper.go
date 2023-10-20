@@ -6,7 +6,7 @@ import (
 )
 
 func ToProductDomain(pdto *dto.ProductDTO) (*model.Product, error) {
-	m := model.Money{}
+	m := &model.Money{}
 	m.SetValueFromBrazilianReal(pdto.Price)
 	product, err := model.NewProduct(
 		pdto.ID,
@@ -22,7 +22,7 @@ func ToProductDomain(pdto *dto.ProductDTO) (*model.Product, error) {
 	return product, nil
 }
 
-func ToProductDTO(product model.Product) (*dto.ProductDTO, error) {
+func ToProductDTO(product *model.Product) (*dto.ProductDTO, error) {
 	pdto, err := dto.NewProductDTO(
 		product.ID,
 		product.Name,
