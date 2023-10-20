@@ -9,10 +9,10 @@ import (
 )
 
 type ProductDTO struct {
-	ID          int32  `json:"id" valid:"int"`
-	Name        string `json:"name" valid:"notnull"`
-	Description string `json:"description" valid:"notnull"`
-	Price       int    `json:"price" valid:"int"`
+	ID          int32   `json:"id" valid:"int,required"`
+	Name        string  `json:"name" valid:"notnull"`
+	Description string  `json:"description" valid:"notnull"`
+	Price       float64 `json:"price" valid:"float"`
 }
 
 func (pdto *ProductDTO) isValid() error {
@@ -49,8 +49,8 @@ func (pdto *ProductDTO) ToJson() ([]byte, error) {
 	return result, nil
 }
 
-func NewProductDTO(id int32, name string, description string, price int) (*ProductDTO, error) {
-	p := &ProductDTO{
+func NewProductDTO(id int32, name string, description string, price float64) (*ProductDTO, error) {
+	pdto := &ProductDTO{
 		id,
 		name,
 		description,
@@ -58,11 +58,11 @@ func NewProductDTO(id int32, name string, description string, price int) (*Produ
 	}
 
 	var iderr error
-	if p.ID < 0 {
+	if pdto.ID < 0 {
 		iderr = errors.New("ID: must be greater than or equal to 0")
 	}
 
-	if err := p.isValid(); err != nil {
+	if err := pdto.isValid(); err != nil {
 		newerr := fmt.Errorf("%v;%v", err, iderr)
 		return nil, newerr
 	}
@@ -71,7 +71,7 @@ func NewProductDTO(id int32, name string, description string, price int) (*Produ
 		return nil, iderr
 	}
 
-	return p, nil
+	return pdto, nil
 }
 
 func NewProductDTOFromJson(data []byte) (*ProductDTO, error) {
