@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 
+	pb "github.com/dhrleandro/product-grpc-golang/application/grpc/protofiles"
 	"github.com/dhrleandro/product-grpc-golang/application/usecase"
 	"github.com/dhrleandro/product-grpc-golang/infrastructure/database"
 	"github.com/dhrleandro/product-grpc-golang/infrastructure/database/repository"
@@ -30,6 +31,9 @@ func main() {
 	for i := range plist {
 		fmt.Println(plist[i])
 	}
+
+	a := pb.CreateProductRequest{}
+	fmt.Println(a)
 
 	fmt.Println("Ok")
 }
