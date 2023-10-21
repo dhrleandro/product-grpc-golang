@@ -21,5 +21,13 @@ func main() {
 	)
 	pr, _ := r.Save(p)
 	fmt.Println(p, pr)
+
+	fmt.Println("")
+
+	plist, _ := r.FindByName("e")
+	for i := range plist {
+		fmt.Println(plist[i])
+	}
+
 	fmt.Println("Ok")
 }
