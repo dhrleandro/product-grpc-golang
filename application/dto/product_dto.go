@@ -8,6 +8,10 @@ import (
 	"github.com/asaskevich/govalidator"
 )
 
+func init() {
+	govalidator.SetFieldsRequiredByDefault(true)
+}
+
 type ProductDTO struct {
 	ID          int32   `json:"id" valid:"int,required"`
 	Name        string  `json:"name" valid:"notnull"`

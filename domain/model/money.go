@@ -1,5 +1,11 @@
 package model
 
+import "github.com/asaskevich/govalidator"
+
+func init() {
+	govalidator.SetFieldsRequiredByDefault(true)
+}
+
 // Value Object
 type Money struct {
 	Value int `valid:"int"`

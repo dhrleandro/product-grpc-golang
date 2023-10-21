@@ -1,4 +1,4 @@
-package db
+package database
 
 import (
 	"log"
@@ -28,13 +28,8 @@ func ConnectDB(env string) *gorm.DB {
 	var db *gorm.DB
 	var err error
 
-	if env != "test" {
-		dsn = os.Getenv("dsn")
-		db, err = gorm.Open(os.Getenv("dbType"), dsn)
-	} else {
-		dsn = os.Getenv("dsnTest")
-		db, err = gorm.Open(os.Getenv("dbTypeTest"), dsn)
-	}
+	dsn = os.Getenv("dsn")
+	db, err = gorm.Open(os.Getenv("dbType"), dsn)
 
 	if err != nil {
 		log.Fatalf("Error connecting to database: %v", err)
@@ -46,7 +41,7 @@ func ConnectDB(env string) *gorm.DB {
 	}
 
 	if os.Getenv("AutoMigrateDb") == "true" {
-		db.AutoMigrate(&model.Product)
+		db.AutoMigrate(&model.Product{})
 	}
 
 	return db
