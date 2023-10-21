@@ -4,27 +4,29 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/dhrleandro/product-grpc-golang/domain/model"
+	"github.com/dhrleandro/product-grpc-golang/application/usecase"
 	"github.com/dhrleandro/product-grpc-golang/infrastructure/database"
 	"github.com/dhrleandro/product-grpc-golang/infrastructure/database/repository"
 )
 
 func main() {
 	db := database.ConnectDB(os.Getenv("env"))
-	r := repository.ProductRepositoryGORM{Db: db}
+	r := &repository.ProductRepositoryGORM{Db: db}
 
-	p, _ := model.NewProduct(
-		0,
-		"Table",
-		"Wood",
-		584799,
-	)
-	pr, _ := r.Save(p)
-	fmt.Println(p, pr)
+	fmt.Println("Executando UseCase CreateProduct")
+	usecase := &usecase.ProductUseCase{r}
+	res, err := usecase.CreateProduct("Lápis de Cor", "feito de madeira", 258)
+	if err != nil {
+		fmt.Printf("%w", err)
+	}
+	fmt.Println("Produto inserido no banco:")
+	fmt.Printf("%v", res)
 
 	fmt.Println("")
+	fmt.Println("")
 
-	plist, _ := r.FindByName("e")
+	fmt.Println("Fetch")
+	plist, _ := usecase.FindProduct("lápis")
 	for i := range plist {
 		fmt.Println(plist[i])
 	}
