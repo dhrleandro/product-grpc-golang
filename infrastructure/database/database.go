@@ -7,9 +7,9 @@ import (
 	"runtime"
 
 	"github.com/dhrleandro/product-grpc-golang/infrastructure/database/model"
-	"github.com/jinzhu/gorm"
 	"github.com/joho/godotenv"
-	_ "gorm.io/driver/sqlite"
+	"gorm.io/driver/sqlite"
+	"gorm.io/gorm"
 )
 
 func init() {
@@ -29,15 +29,11 @@ func ConnectDB(env string) *gorm.DB {
 	var err error
 
 	dsn = os.Getenv("dsn")
-	db, err = gorm.Open(os.Getenv("dbType"), dsn)
+	db, err = gorm.Open(sqlite.Open(dsn), &gorm.Config{})
 
 	if err != nil {
 		log.Fatalf("Error connecting to database: %v", err)
 		panic(err)
-	}
-
-	if os.Getenv("debug") == "true" {
-		db.LogMode(true)
 	}
 
 	if os.Getenv("AutoMigrateDb") == "true" {
