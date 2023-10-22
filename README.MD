@@ -37,6 +37,7 @@ Para testar o servidor gRPC utilizei a ferramenta
 https://github.com/fullstorydev/grpcui
 
 ```sh
+go run ./main.go
 grpcui -plaintext localhost:9000
 ```
 
