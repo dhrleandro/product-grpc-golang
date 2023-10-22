@@ -11,10 +11,10 @@ type Money struct {
 	Value int `valid:"int"`
 }
 
-func (m *Money) ToBrazilianReal() float64 {
-	return float64(m.Value) / 100
+func (m *Money) ToBrazilianReal() float32 {
+	return float32(m.Value) / 100
 }
 
-func (m *Money) SetValueFromBrazilianReal(brl float64) {
+func (m *Money) SetValueFromBrazilianReal(brl float32) {
 	m.Value = int(brl * 100)
 }

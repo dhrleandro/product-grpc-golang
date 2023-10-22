@@ -12,9 +12,15 @@ type productServiceServer struct {
 	productUseCase *usecase.ProductUseCase
 }
 
-func (svc *productServiceServer) CreateProduct(ctx context.Context, c *pb.CreateProductRequest) (*pb.CreateProductResponse, error) {
+func (svc *productServiceServer) CreateProduct(ctx context.Context, in *pb.CreateProductRequest) (*pb.CreateProductResponse, error) {
+
+	product, err := svc.productUseCase.CreateProduct(in.Name, in.Description, float32(in.Price))
+	if err != nil {
+		return nil, err
+	}
+
 	return &pb.CreateProductResponse{
-		Product: &pb.Product{Id: 1, Name: "Carros", Description: "", Price: 0},
+		Product: &pb.Product{Id: product.ID, Name: product.Name, Description: product.Description, Price: float32(product.Price.ToBrazilianReal())},
 	}, nil
 }
 

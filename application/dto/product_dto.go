@@ -16,7 +16,7 @@ type ProductDTO struct {
 	ID          int32   `json:"id" valid:"int,required"`
 	Name        string  `json:"name" valid:"notnull"`
 	Description string  `json:"description" valid:"notnull"`
-	Price       float64 `json:"price" valid:"float"`
+	Price       float32 `json:"price" valid:"float"`
 }
 
 func (pdto *ProductDTO) isValid() error {
@@ -53,7 +53,7 @@ func (pdto *ProductDTO) ToJson() ([]byte, error) {
 	return result, nil
 }
 
-func NewProductDTO(id int32, name string, description string, price float64) (*ProductDTO, error) {
+func NewProductDTO(id int32, name string, description string, price float32) (*ProductDTO, error) {
 	pdto := &ProductDTO{
 		id,
 		name,

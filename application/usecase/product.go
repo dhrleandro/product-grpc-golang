@@ -12,7 +12,7 @@ type ProductUseCase struct {
 func (cpuc *ProductUseCase) CreateProduct(
 	name string,
 	description string,
-	price float64,
+	price float32,
 ) (*model.Product, error) {
 	m := &model.Money{}
 	m.SetValueFromBrazilianReal(price)

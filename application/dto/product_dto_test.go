@@ -11,7 +11,7 @@ func TestNewProductDTO(t *testing.T) {
 	var id int32 = 10
 	name := "Table"
 	description := "wood"
-	price := 253.5
+	var price float32 = 253.5
 	pdto, err := dto.NewProductDTO(id, name, description, price)
 
 	require.Equal(t, err, nil)
@@ -53,5 +53,5 @@ func TestNewProductFromJsonDTO(t *testing.T) {
 	require.Equal(t, p.ID, int32(58))
 	require.Equal(t, p.Name, "Computer")
 	require.Equal(t, p.Description, "Core i7")
-	require.Equal(t, p.Price, 100.38)
+	require.Equal(t, p.Price, float32(100.38))
 }
