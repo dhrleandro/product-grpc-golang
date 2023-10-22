@@ -1,4 +1,4 @@
-# Observação
+# Product gRPC Golang
 
 Este era um dos desafios da Imersão Fullcyle. Infelizmente não pude terminar a tempo de entregá-lo no dia 20/10/2023 mas para aprimorar meus conhecimentos em Go decidi conclui-lo mesmo assim.
 
@@ -8,6 +8,14 @@ No entando todo o resto do código foi desenvolvido por min (dhrleandro). Tentei
 
 https://github.com/stemmlerjs/ddd-forum
 https://github.com/devfullcycle/imersao15
+
+No desenvolvimento deste projeto pude aprender um pouco mais sobre Go e principalmente gRPC, esta é a primeira vez que implemento um servidor gRPC.
+
+Gostei de começar o desenvolvimento pelo modelo de domínio com teste, depois implementei os repositórios com o ORM GORM separando o modelo do GORM do meu modelo de domínio e utilizando um mapeador para transitar entre eles.
+
+Por fim implementei a camada de aplicação com usecases e por último o gRPC.
+
+Faltou usar os DTOs. Este trabalho ainda está em evolução.
 
 # Testar gRPC
 
