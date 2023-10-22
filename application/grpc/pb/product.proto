@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package github.com.codeedu.codepix;
+package github.com.dhrleandro.productgrpcgolang;
 
 option go_package = "protofiles/pb";
 
@@ -28,7 +28,7 @@ message CreateProductResponse {
 }
 
 message FindProductsRequest{
-
+    string term = 1;
 }
 
 message FindProductsResponse{

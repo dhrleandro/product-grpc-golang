@@ -7,7 +7,7 @@ import (
 	"os"
 
 	productgrpc "github.com/dhrleandro/product-grpc-golang/application/grpc"
-	pb "github.com/dhrleandro/product-grpc-golang/application/grpc/protofiles"
+	pb "github.com/dhrleandro/product-grpc-golang/application/grpc/pb"
 	"github.com/dhrleandro/product-grpc-golang/application/usecase"
 	"github.com/dhrleandro/product-grpc-golang/infrastructure/database"
 	"github.com/dhrleandro/product-grpc-golang/infrastructure/database/repository"
