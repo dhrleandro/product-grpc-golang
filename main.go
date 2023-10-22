@@ -16,9 +16,6 @@ import (
 )
 
 func main() {
-	fmt.Println("Iniciando...", float32(float32(320.49)))
-	return
-
 	db := database.ConnectDB(os.Getenv("env"))
 
 	// Fica ouvindo conexões na porta 9000
