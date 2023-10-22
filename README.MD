@@ -4,6 +4,17 @@ Este era um dos desafios da Imersão Fullcyle. Infelizmente não pude terminar a
 
 Eu usei um arquivo protobuf pronto e não alterei, por esse motivo o servidor gRPC está com o pacote github.com.codeedu.codepix
 
+```
+Pequena observação
+Alterei o arquivo proto no commit df00cdd222ef7b638a8b845691eea57fa876170b
+
+De: github.com.codeedu.codepix
+Para: github.com.dhrleandro.productgrpcgolang
+
+De: message FindProductsRequest{}
+Para: message FindProductsRequest{string term = 1;}
+```
+
 No entando todo o resto do código foi desenvolvido por min (dhrleandro). Tentei implementar um pouco da ideia do Domain Driven Design e Clean Architecture. Minhas principais inspirações:
 
 https://github.com/stemmlerjs/ddd-forum
